@@ -35,6 +35,7 @@ renamed_modules = {
     'web_advanced_filters': 'web_advanced_filter',
 
     # EXO/pt
+    'l10n_pt_base': 'l10n_pt',
     'l10n_pt_account_backend_exo': 'l10n_pt_backend_exo',
     'l10n_pt_account_saft': 'l10n_pt_saft',
 }
@@ -93,7 +94,6 @@ merged_modules = {
     'website_form_metadata': 'website_form',
 
     # EXO/pt
-    'l10n_pt_base': 'l10n_pt',
     'l10n_pt_account_invoicing': 'l10n_pt',
     'l10n_pt_account_payment': 'l10n_pt',
 }

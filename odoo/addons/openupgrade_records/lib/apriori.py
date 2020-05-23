@@ -33,6 +33,10 @@ renamed_modules = {
     'stock_pack_operation_auto_fill': 'stock_move_line_auto_fill',
     # OCA/web
     'web_advanced_filters': 'web_advanced_filter',
+
+    # EXO/pt
+    'l10n_pt_account_backend_exo': 'l10n_pt_backend_exo',
+    'l10n_pt_account_saft': 'l10n_pt_saft',
 }
 
 merged_modules = {
@@ -87,6 +91,11 @@ merged_modules = {
     'web_sheet_full_width': 'web_responsive',
     # OCA/website
     'website_form_metadata': 'website_form',
+
+    # EXO/pt
+    'l10n_pt_base': 'l10n_pt',
+    'l10n_pt_account_invoicing': 'l10n_pt',
+    'l10n_pt_account_payment': 'l10n_pt',
 }
 
 # only used here for openupgrade_records analysis:

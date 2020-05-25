@@ -96,6 +96,7 @@ merged_modules = {
     'l10n_pt_base': 'l10n_pt',
     'l10n_pt_account_invoicing': 'l10n_pt',
     'l10n_pt_account_payment': 'l10n_pt',
+    'l10n_pt_dataport': 'l10n_pt',
 }
 
 # only used here for openupgrade_records analysis:

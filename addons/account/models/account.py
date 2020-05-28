@@ -749,6 +749,16 @@ class AccountTax(models.Model):
     _description = 'Tax'
     _order = 'sequence,id'
 
+    # Exopatch
+    python_compute = fields.Text(string='Python Code', default="result = price_unit * 0.10",
+        help="Compute the amount of the tax by setting the variable 'result'.\n\n"
+            ":param base_amount: float, actual amount on which the tax is applied\n"
+            ":param price_unit: float\n"
+            ":param quantity: float\n"
+            ":param company: res.company recordset singleton\n"
+            ":param product: product.product recordset singleton or None\n"
+            ":param partner: res.partner recordset singleton or None")
+
     @api.model
     def _default_tax_group(self):
         return self.env['account.tax.group'].search([], limit=1)

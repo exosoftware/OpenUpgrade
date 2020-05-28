@@ -8,6 +8,7 @@ from odoo.tools.float_utils import float_round as round
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from odoo.exceptions import UserError, ValidationError
 from odoo import api, fields, models, _
+from odoo.tools.safe_eval import safe_eval
 
 
 class AccountAccountType(models.Model):
@@ -878,6 +879,14 @@ class AccountTax(models.Model):
             price_unit * quantity eventually affected by previous taxes (if tax is include_base_amount XOR price_include)
         """
         self.ensure_one()
+        # Exopatch: upgrading python taxes fails on code type taxes. This fixes it
+        # It's a copy from account_tax_python code
+        if self.amount_type == 'code':
+            company = self.env.user.company_id
+            localdict = {'base_amount': base_amount, 'price_unit':price_unit, 'quantity': quantity,
+                         'product': product, 'partner': partner, 'company': company}
+            safe_eval(self.python_compute, localdict, mode="exec", nocopy=True)
+            return localdict['result']
         if self.amount_type == 'fixed':
             # Use copysign to take into account the sign of the base amount which includes the sign
             # of the quantity and the sign of the price_unit
